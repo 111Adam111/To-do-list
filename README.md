@@ -1,6 +1,6 @@
 # React To-do-list
 
-This fully responsive to do list allows to add, remove or edit tasks. It is also possible to change color of stripe on the left.
+This fully responsive to-do list allows you to add, remove, or edit tasks. It also allows to change the color of the stripe on the left.
 
 
 ### Technology:
