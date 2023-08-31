@@ -5,6 +5,7 @@ This fully responsive to-do list allows you to add, remove, or edit tasks. It al
 
 ### Technology:
 #### ReactJS
+#### SCSS
 #### Firebase (deployment)
 
 

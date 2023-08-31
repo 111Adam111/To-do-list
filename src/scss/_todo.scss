@@ -1,20 +1,19 @@
 .list {
-
-padding: .2rem;
+    padding: 0.2rem;
 }
 
 .toDo {
     min-height: 3rem;
     background-color: $primary-color;
-    border-radius: .2rem;
+    border-radius: 0.2rem;
     font-size: 1.4rem;
-    margin: .5rem;
+    margin: 0.5rem;
     display: flex;
     justify-content: space-between;
 }
 
 .content {
-    padding: .8rem;
+    padding: 0.8rem;
     display: flex;
     align-items: center;
     p {
@@ -32,34 +31,34 @@ padding: .2rem;
         font-size: 1.4rem;
         align-items: center;
         outline: none;
-        }
     }
+}
 
 .icon-box {
-    padding: .8rem;
+    padding: 0.8rem;
 }
-.icon-box, .icon-container {
+
+.icon-box,
+.icon-container {
     display: flex;
     align-items: center;
 }
+
 .icon-container {
     border-radius: 1rem;
     background-color: $primary-color;
     box-shadow: 0 0 5px 5px $primary-color;
-
 }
-
 
 .optional {
     position: absolute;
     transform: translateX(-5rem);
 }
 
-
 .icon {
     height: 2rem;
     width: 2rem;
-    margin-left: .5rem;
+    margin-left: 0.5rem;
     cursor: pointer;
     &:hover {
         transform: scale(1.1);
