@@ -1,19 +1,20 @@
 import React, { useContext, useRef } from 'react'
 import { ListContext } from './Context'
 import ToDo from './ToDo'
+import { v4 as uuidv4 } from 'uuid';
 
 const Input = () => {
     const { list, setList } = useContext(ListContext)
     const inputRef = useRef(null)
-
+    
     // Add To do
     const handleClick = () => {
         const input = inputRef.current
-        const randomKey = Math.floor(Math.random() * 10000)
+        const key = uuidv4()
         if (input.value) {
             setList([
                 ...list,
-                <ToDo content={input.value} key={randomKey} id={randomKey} />,
+                <ToDo content={input.value} key={key} id={key} />,
             ])
             input.value = ''
             input.focus()

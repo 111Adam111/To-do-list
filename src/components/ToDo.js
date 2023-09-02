@@ -9,22 +9,21 @@ import { ListContext } from './Context'
 
 const ToDo = ({ content, id }) => {
     const inputRef = useRef(null)
-    const [text, setText] = useState(content)
-    const [isEdited, setIsEdited] = useState(false)
     const { list, setList } = useContext(ListContext)
-    const [showIcons, setShowIcons] = useState(false)
-    const [color, setColor] = useState(0)
-    const [colors, setColors] = useState([
-        '#fff',
-        '#000',
-        '#ff0000',
-        '#3300ff',
-        '#18ff00',
-    ])
+    const [todo, setTodo] = useState({
+        text: content,
+        isEdited: false,
+        showIcons: false,
+        color: 0,
+        colors: ['#fff', '#000', '#ff0000', '#3300ff', '#18ff00'],
+    })
 
     // Edit To-do
     const handleEdit = (event) => {
-        setIsEdited(!isEdited)
+        setTodo({
+            ...todo,
+            isEdited: !todo.isEdited,
+        })
         event.stopPropagation()
         setTimeout(() => {
             inputRef.current.focus()
@@ -33,25 +32,36 @@ const ToDo = ({ content, id }) => {
 
     // Edit-aproval button
     const handleAccept = (event) => {
-        setText(inputRef.current.value)
-        setIsEdited(!isEdited)
-        setShowIcons(!showIcons)
+        setTodo({
+            ...todo,
+            text: inputRef.current.value,
+            isEdited: !todo.isEdited,
+            showIcons: !todo.showIcons,
+        })
         event.stopPropagation()
     }
+
     // Remove button
     const handleRemove = (id) => {
         setList(list.filter((item) => item.props.id !== id))
     }
+
     // Show options
     const toggleIconBox = (event) => {
-        setShowIcons(!showIcons)
+        setTodo({
+            ...todo,
+            showIcons: !todo.showIcons,
+        })
         event.stopPropagation()
-        isEdited && handleAccept(event)
+        todo.isEdited && handleAccept(event)
     }
 
     // Change color
     const handleClick = () => {
-        setColor(color >= 4 ? 0 : color + 1)
+        setTodo({
+            ...todo,
+            color: todo.color >= 4 ? 0 : todo.color + 1,
+        })
     }
 
     // Prevents color change when clicking input field
@@ -61,23 +71,23 @@ const ToDo = ({ content, id }) => {
         <div
             className="toDo"
             onClick={handleClick}
-            style={{ borderLeft: ' 3px solid ' + colors[color] }}
+            style={{ borderLeft: ' 3px solid ' + todo.colors[todo.color] }}
         >
             <div className="content">
-                {isEdited ? (
+                {todo.isEdited ? (
                     <input
-                        defaultValue={text}
+                        defaultValue={todo.text}
                         ref={inputRef}
                         onClick={inputClick}
                     />
                 ) : (
-                    <p>{text}</p>
+                    <p>{todo.text}</p>
                 )}
             </div>
             <div className="icon-box">
-                {showIcons && (
+                {todo.showIcons && (
                     <div className="icon-container optional">
-                        {isEdited ? (
+                        {todo.isEdited ? (
                             <CiCircleCheck
                                 className="icon"
                                 onClick={handleAccept}
