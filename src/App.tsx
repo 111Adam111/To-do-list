@@ -1,12 +1,10 @@
 import Input from './components/Input'
 import List from './components/List'
 import './scss/styles.css'
-import { useState } from 'react'
-import { ListContext, ListContextType, initialValue } from './components/Context'
+import { ListContextProvider } from './components/Context'
 
 // Hosting
 import { initializeApp } from 'firebase/app'
-import { getAnalytics } from 'firebase/analytics'
 import { FunctionComponent } from 'react'
 
 const firebaseConfig = {
@@ -21,18 +19,15 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
-const analytics = getAnalytics(app)
 
 const App: FunctionComponent = () => {
-    const [list, setList] = useState<ListContextType>(initialValue)
-
     return (
         <div className="App-box">
             <div className="App">
-                <ListContext.Provider value={list}>
+                <ListContextProvider>
                     <Input />
                     <List />
-                </ListContext.Provider>
+                </ListContextProvider>
             </div>
         </div>
     )

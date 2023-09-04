@@ -1,4 +1,11 @@
-import React, { useState, useContext, useRef } from 'react'
+import {
+    useState,
+    useContext,
+    useRef,
+    MouseEventHandler,
+    ReactElement,
+    FunctionComponent
+} from 'react'
 import {
     CiCircleRemove,
     CiCircleCheck,
@@ -7,10 +14,23 @@ import {
 } from 'react-icons/ci'
 import { ListContext } from './Context'
 
-const ToDo = ({ content, id }) => {
-    const inputRef = useRef(null)
-    const { list, setList } = useContext(ListContext)
-    const [todo, setTodo] = useState({
+export type TodoProps = {
+    content: string
+    id: string
+}
+
+interface TodoTypes {
+    text: string
+    isEdited: boolean
+    showIcons: boolean
+    color: number
+    colors: string[]
+}
+
+export const ToDo = ({ content, id }: TodoProps): ReactElement => {
+    const inputRef = useRef<HTMLInputElement | null>(null)
+    let { list, setList } = useContext(ListContext)
+    const [todo, setTodo] = useState<TodoTypes>({
         text: content,
         isEdited: false,
         showIcons: false,
@@ -19,22 +39,22 @@ const ToDo = ({ content, id }) => {
     })
 
     // Edit To-do
-    const handleEdit = (event) => {
+    const handleEdit: MouseEventHandler<SVGElement> = (event): void => {
         setTodo({
             ...todo,
             isEdited: !todo.isEdited,
         })
         event.stopPropagation()
         setTimeout(() => {
-            inputRef.current.focus()
+            inputRef?.current?.focus()
         }, 100)
     }
 
     // Edit-aproval button
-    const handleAccept = (event) => {
+    const handleAccept: MouseEventHandler<SVGElement> = (event): void => {
         setTodo({
             ...todo,
-            text: inputRef.current.value,
+            text: inputRef?.current?.value as string,
             isEdited: !todo.isEdited,
             showIcons: !todo.showIcons,
         })
@@ -42,12 +62,14 @@ const ToDo = ({ content, id }) => {
     }
 
     // Remove button
-    const handleRemove = (id) => {
-        setList(list.filter((item) => item.props.id !== id))
+    const handleRemove = (id: string): void => {
+        setList(
+            list.filter((item: ReactElement): boolean => item.props.id !== id)
+        )
     }
 
     // Show options
-    const toggleIconBox = (event) => {
+    const toggleIconBox: MouseEventHandler<SVGElement> = (event): void => {
         setTodo({
             ...todo,
             showIcons: !todo.showIcons,
@@ -57,7 +79,7 @@ const ToDo = ({ content, id }) => {
     }
 
     // Change color
-    const handleClick = () => {
+    const colorChange = () => {
         setTodo({
             ...todo,
             color: todo.color >= 4 ? 0 : todo.color + 1,
@@ -65,12 +87,13 @@ const ToDo = ({ content, id }) => {
     }
 
     // Prevents color change when clicking input field
-    const inputClick = (event) => event.stopPropagation()
+    const inputClick: MouseEventHandler<HTMLDivElement> = (event) =>
+        event.stopPropagation()
 
     return (
         <div
             className="toDo"
-            onClick={handleClick}
+            onClick={colorChange}
             style={{ borderLeft: ' 3px solid ' + todo.colors[todo.color] }}
         >
             <div className="content">

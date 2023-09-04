@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-      "target": "ES6",
+      "target": "ES5",
       "lib": ["dom", "dom.iterable", "esnext"],
       "allowJs": true,
       "checkJs": true,
@@ -15,7 +15,7 @@
       "resolveJsonModule": true,
       "isolatedModules": true,
       "noEmit": true,
-      "noUnusedLocals": true,
+      "noUnusedLocals": false,
       "noUnusedParameters": true,
       "noImplicitAny": true,
       "noImplicitThis": true,

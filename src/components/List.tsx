@@ -1,7 +1,5 @@
-import { useContext } from 'react'
+import { useContext, FunctionComponent } from 'react'
 import { ListContext } from './Context'
-import { FunctionComponent } from 'react'
-
 
 
 const List: FunctionComponent = () => {

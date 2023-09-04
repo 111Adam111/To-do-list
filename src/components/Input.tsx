@@ -1,14 +1,14 @@
-import { useContext, useRef } from 'react'
+import { useContext, useRef, KeyboardEventHandler, FunctionComponent } from 'react'
 import { ListContext } from './Context'
 import ToDo from './ToDo'
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
 
-const Input = () => {
-    const { list, setList } = useContext(ListContext)
-    const inputRef = useRef<HTMLInputElement | null>(null);
-    
+const Input: FunctionComponent = () => {
+    let { list, setList } = useContext(ListContext)
+    const inputRef = useRef<HTMLInputElement | null>(null)
+
     // Add To do
-    const handleClick = () => {
+    const addTodo = (): void => {
         const input = inputRef.current
         const key: string = uuidv4()
         if (input && input.value) {
@@ -22,12 +22,13 @@ const Input = () => {
     }
 
     // Enter Add
-    const enter = (event) => event.key === 'Enter' && handleClick()
+    const enter: KeyboardEventHandler = (event) =>
+        event.key === 'Enter' && addTodo()
 
     return (
         <div className="input-box" onKeyDown={enter}>
             <input type="text" ref={inputRef} />
-            <div className="btn" onClick={handleClick}>
+            <div className="btn" onClick={addTodo}>
                 <p>Add</p>
             </div>
         </div>
