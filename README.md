@@ -1,34 +1,38 @@
 # React Typescript To-do-list
 
-This fully responsive to-do list allows you to add, remove, or edit tasks. It also allows to change the color of the stripe on the left.
+This fully responsive to-do list lets user add, remove and edit tasks aswell as asign them a color.
 
+## Test it without downloading and installation! Visit https://todolist.adamdunowski.pl/
+## Technology
 
-## Technology:
+-   Typescript
+-   React
+-   SCSS
+-   uuid
+-   Firebase
 
-- Typescript
-- React
-- SCSS
-- uuid
-- Firebase
+## Installation
 
+-   Download or clone project
+-   Navigate to projects directory
 
-## Installation:
-
-- Download or clone project
-- Navigate to projects directory
 ```bash
   cd to-do-list
 ```
 
-- Install dependecies
+-   Install dependencies
+
 ```bash
   npm install
 ```
 
-- Run project 
+-   Run project
+
 ```bash
   npm start
 ```
+
+## Screenshots
 
 ![todo1](https://user-images.githubusercontent.com/70273104/227790039-31279679-1afc-4fd9-978e-63c6adebc526.jpg)
 ![todo2](https://user-images.githubusercontent.com/70273104/227790036-4d63d153-91d4-46ce-868f-6ecfa7410285.jpg)
