@@ -1,9 +1,8 @@
 # React Typescript To-do-list
 
-This fully responsive to-do list lets user add, remove and edit tasks aswell as asign them a color.
+This fully responsive to-do list lets user add, remove and edit tasks as well as asign them a color.
 
-## Test it without downloading and installation! 
-## Visit https://todolist.adamdunowski.pl/
+## Test it without downloading and installation! Visit https://todolist.adamdunowski.pl/
 ## Technology
 
 -   Typescript
