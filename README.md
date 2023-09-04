@@ -10,7 +10,11 @@ This fully responsive to-do list allows you to add, remove, or edit tasks. It al
 #### uuid
 #### Firebase
 
-
+### Instalation: 
+#### 1. Download or clone project
+#### 2. Navigate to projects directory
+#### 3. type "npm install" in terminal
+#### 4. Once installation is done type "npm start" to open project
 
 ![todo1](https://user-images.githubusercontent.com/70273104/227790039-31279679-1afc-4fd9-978e-63c6adebc526.jpg)
 ![todo2](https://user-images.githubusercontent.com/70273104/227790036-4d63d153-91d4-46ce-868f-6ecfa7410285.jpg)
